@@ -43,7 +43,7 @@ export class BlogService {
 
   public getAllBlogs(): any {
 
-    return this.getAllBlogs;
+    return this.allBlogs;
 
   }
 
