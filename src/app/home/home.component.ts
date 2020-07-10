@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit , OnDestroy{
   ngOnInit() {
 
     console.log("home componenet OnInit callled");
+    //this.allBlogs= this.blogHttpService.getAllBlogs()
+    
     this.allBlogs= this.blogHttpService.getAllBlogs().subscribe(
 
       data => {
