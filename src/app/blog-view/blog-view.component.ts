@@ -11,7 +11,7 @@ export class BlogViewComponent implements OnInit, OnDestroy{
 
   
 
-  constructor(private _route: ActivatedRoute, private router: Router, public blogService:BlogService ) {
+  constructor(private _route: ActivatedRoute, private router: Router, public blogService:BlogService) {
     console.log("constructor is called");
   }
 
