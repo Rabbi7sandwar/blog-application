@@ -1,62 +1,73 @@
 import { Injectable } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
 
+  public currentBlog;
+
+  //declare dummy blog variable here
   public allBlogs = [
-   {
-      "blogId": "_BDY0jevz",
-      "lastModified": "2020-06-06T16:57:17.004Z",
-      "created": "2020-06-06T16:57:17.004Z",
-      "tags": [],
-      "author": "saurabh bharti",
-      "category": "Health",
+    {
+      "blogId": "1",
+      "lastModified":"2017-10-20T12:20:47.854Z",
+      "created": "2017-10-20T12:20:47.854Z",
+      "tags":[],
+      "author":"Admin",
+      "Category":"Comedy",
       "isPublished": true,
       "views": 0,
-      "bodyHtml": "dsfsdgasfadfqw4234234",
-      "description": "sdgsdg2342342341",
-      "title": "Web Component Fundamentalasasasasa"
+      "bodyHTML": "This is a Big Body ",
+      "description": "This is blog 1 description",
+      "title": "This is Blog 1"
     },
     {
-      "blogId": "omCWSQUI8",
-      "lastModified": "2020-06-07T02:43:35.290Z",
-      "created": "2020-06-07T02:43:35.290Z",
-      "tags": [],
-      "author": "kalyan veenam",
-      "category": "comedy",
+      "blogId": "2",
+      "lastModified":"2017-11-20T12:20:47.854Z",
+      "created": "2017-11-20T12:20:47.854Z",
+      "tags":[],
+      "author":"Admin",
+      "Category":"Comedy",
       "isPublished": true,
       "views": 0,
-      "bodyHtml": "Heyyy",
-      "description": "Desx",
-      "title": "Test"
+      "bodyHTML": "<h1>This is a Big Body</h1>",
+      "description": "This is blog 2 description",
+      "title": "This is Blog 2"
+    },
+    {
+      "blogId": "3",
+      "lastModified":"2017-12-20T12:20:47.854Z",
+      "created": "2017-12-20T12:20:47.854Z",
+      "tags":[],
+      "author":"Admin",
+      "Category":"Comedy",
+      "isPublished": true,
+      "views": 0,
+      "bodyHTML": "This is a Big Body ",
+      "description": "This is blog 3 description",
+      "title": "This is Blog 3"
     }
   ]
-  public currentBlog;
-  
-  constructor() {
 
-    console.log("service constructor is called");
-  }
-
-  public getAllBlogs(): any {
-
+  public getAllBlogs():any{
     return this.allBlogs;
-
   }
 
-
-  public  getsingleBlogInformation(currentBlogId): any {
-    for (let blog of this.allBlogs) {
-      if (blog.blogId == currentBlogId) {
+  public getSingleBlogInformation(currentBlogId):any {
+    for(let blog of this.allBlogs){
+      if(blog.blogId == currentBlogId){
         this.currentBlog = blog;
+        return this.currentBlog;
       }
-
     }
-    console.log(this.currentBlog);
-    return this.currentBlog;
-
   }
-} 
+
+  constructor() { 
+
+   
+  }
+
+
+}

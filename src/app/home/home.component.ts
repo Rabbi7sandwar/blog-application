@@ -1,31 +1,45 @@
+import { BlogService } from './../blog.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BlogService } from '../blog.service';
+import { BlogHttpService } from '../blog-http.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit , OnDestroy{
+export class HomeComponent implements OnInit,OnDestroy {
 
+  public allBlogs=[];
 
-  public allBlogs;
+  constructor(public blogHttpService: BlogHttpService) {
 
+    console.log("Home component service called");
 
-  constructor(public blogService:BlogService) { 
-    console.log("home component construstor called")
-  }
+   }
 
   ngOnInit() {
 
-    console.log("home componenet OnInit callled");
-    this.allBlogs = this.blogService.getAllBlogs();
-    console.log(this.allBlogs);
+    console.log("Home component onInit called");
+    this.allBlogs= this.blogHttpService.getAllBlogs().subscribe(
+
+      data => {
+        console.log('logged in');
+        console.log(data);
+        this.allBlogs=data["data"];
+        console.log(this.allBlogs);
+      },
+
+      error => {
+        console.log("Error..!!");
+        console.log(error.errorMessage);
+      }
+    );
+
   }
 
   ngOnDestroy() {
-    console.log("home component Destroyed")
 
+    console.log("Home component onDestroy called");
 
   }
 
